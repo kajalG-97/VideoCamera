@@ -3,7 +3,14 @@
     "es2021": true,
     "browser": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -11,7 +18,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
@@ -20,15 +27,17 @@
       "error",
       { "namedComponents": "arrow-function" }
     ],
-    "react/jsx-filename-extension": [0, { "allow": "as-needed" }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "jsx-quotes": [2, "prefer-single"],
     "object-curly-newline": "off",
     "comma-dangle": ["error", "never"],
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-fragments": ["warn", "element", { "minimumChildren": 2 }],
+    "arrow-body-style": ["error", "as-needed"]
   },
   "overrides": [
     {
-      "files": ["**/*.spec.js", "**/*.spec.jsx", "**/*.test.js"],
+      "files": ["**/*.spec.js", "**/*.spec.jsx", "**/*.test.js", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
       "env": {
         "jest": true
       }
